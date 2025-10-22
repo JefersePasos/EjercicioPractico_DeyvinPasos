@@ -31,6 +31,7 @@ public class LibroController {
         var libros = libroService.getLibros(false);
         model.addAttribute("libros", libros);
         model.addAttribute("totalLibros", libros.size());
+        model.addAttribute("libro", new Libro());
         return "/libro/listado";
     }
 

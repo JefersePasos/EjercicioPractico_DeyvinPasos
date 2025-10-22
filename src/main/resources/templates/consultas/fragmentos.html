@@ -3,7 +3,6 @@
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{general/fragmentos :: head}"/>
     <body>
-        <!-- Fragmento 1: Tabs por categoría -->
         <section th:fragment="tabs" class="py-3 mb-4">
             <div class="d-flex justify-content-center px-5"> 
                 <ul class="nav nav-underline">
@@ -25,11 +24,9 @@
                 </ul>
             </div>
         </section>
-
-        <!-- Fragmento 2: Tarjetas de libros -->
         <section th:fragment="tarjetas" class="container py-4">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
-                <div th:each="l : ${productos}" class="col">
+                <div th:each="l : ${libros}" class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="d-flex justify-content-center align-items-center bg-light p-3" style="height: 200px;">
                             <img th:src="${l.rutaImagen}" class="img-fluid" 
@@ -47,8 +44,8 @@
                         </div>
                         <div class="card-footer bg-white d-flex justify-content-between align-items-center">
                             <span class="text-success h5" th:text="${#numbers.formatCurrency(l.precio)}">$0.00</span>
-                            <span th:if="${l.existencias > 0}" class="badge text-bg-success ms-2" th:text="${l.existencias} + ' disponibles'"></span>
-                            <span th:unless="${l.existencias > 0}" class="badge text-bg-danger ms-2">Agotado</span>
+                            <span th:if="${l.disponible}" class="badge text-bg-success ms-2">Disponible</span>
+                            <span th:unless="${l.disponible}" class="badge text-bg-danger ms-2">No disponible</span>
                         </div>
                     </div>
                 </div>
