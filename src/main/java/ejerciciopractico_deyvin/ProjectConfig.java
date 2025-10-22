@@ -59,7 +59,7 @@ public class ProjectConfig implements WebMvcConfigurer {
     @Bean("messageSource")
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("messages"); // messages.properties para i18n
+        messageSource.setBasenames("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

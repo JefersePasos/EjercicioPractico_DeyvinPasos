@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"/>
+    <body>
+        <!-- Fragmento 1: Tabs por categoría -->
+        <section th:fragment="tabs" class="py-3 mb-4">
+            <div class="d-flex justify-content-center px-5"> 
+                <ul class="nav nav-underline">
+                    <li class="nav-item">
+                        <a th:href="@{/}" 
+                           th:classappend="${idCategoriaActual == null} ? 'active'"
+                           class="nav-link" 
+                           aria-current="page">
+                            Todos los libros
+                        </a>
+                    </li>
+                    <li th:each="c : ${categorias}" class="nav-item">
+                        <a th:href="@{/consultas/{id}(id=${c.idCategoria})}"
+                           th:classappend="${idCategoriaActual != null and idCategoriaActual.equals(c.idCategoria)} ? 'active'"
+                           class="nav-link">
+                            [[${c.descripcion}]]
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Fragmento 2: Tarjetas de libros -->
+        <section th:fragment="tarjetas" class="container py-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                <div th:each="l : ${productos}" class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="d-flex justify-content-center align-items-center bg-light p-3" style="height: 200px;">
+                            <img th:src="${l.rutaImagen}" class="img-fluid" 
+                                 th:alt="${l.descripcion}" 
+                                 style="max-height: 100%; object-fit: contain;"/>
+                        </div>
+                        <div class="card-header bg-white">
+                            <h5 class="card-title text-center text-truncate mb-0" th:text="${l.descripcion}">Título</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-muted mb-2" th:text="${l.detalle}">Detalle</p>
+                            <p class="text-secondary small mb-0"><strong>Autor:</strong> <span th:text="${l.autor}">Autor</span></p>
+                            <p class="text-secondary small mb-0"><strong>ISBN:</strong> <span th:text="${l.isbn}">ISBN</span></p>
+                            <p class="text-secondary small mb-0"><strong>Publicado:</strong> <span th:text="${#temporals.format(l.fechaPublicacion, 'yyyy-MM-dd')}">Fecha</span></p>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <span class="text-success h5" th:text="${#numbers.formatCurrency(l.precio)}">$0.00</span>
+                            <span th:if="${l.existencias > 0}" class="badge text-bg-success ms-2" th:text="${l.existencias} + ' disponibles'"></span>
+                            <span th:unless="${l.existencias > 0}" class="badge text-bg-danger ms-2">Agotado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
