@@ -4,16 +4,12 @@
     <body>
         <header th:replace="~{general/fragmentos :: header}"/>
         
-        <!-- Agregar categoría (modal) -->
         <section th:replace="~{categoria/fragmentos :: agregar}"/>
 
-        <!-- Listado de categorías -->
         <section th:replace="~{categoria/fragmentos :: listado}"/>
 
-        <!-- Modal de confirmación para eliminar -->
         <section th:replace="~{categoria/fragmentos :: confirmarEliminar}"/>
 
-        <!-- Mensajes tipo toast -->
         <section th:replace="~{general/fragmentos :: mostrarToast}"/>
         
         <footer th:replace="~{general/fragmentos :: footer}"/>

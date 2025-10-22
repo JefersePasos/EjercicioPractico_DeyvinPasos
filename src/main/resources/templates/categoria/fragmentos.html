@@ -92,6 +92,54 @@
             </div>
         </div>
     </section>
+    
+    <section th:fragment="listado">
+        <div class="container mt-4">
+            <h2 class="mb-4">Categorías Registradas</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Activo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${categorias}">
+                        <td th:text="${c.idCategoria}">1</td>
+                        <td th:text="${c.nombre}">Nombre</td>
+                        <td th:text="${c.descripcion}">Descripción</td>
+                        <td>
+                            <span th:if="${c.activo}" class="badge bg-success">Sí</span>
+                            <span th:unless="${c.activo}" class="badge bg-danger">No</span>
+                        </td>
+                        <td>
+                            <a th:href="@{/categoria/modificar/{id}(id=${c.idCategoria})}"
+                                class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <form th:action="@{/categoria/eliminar}" method="post" style="display:inline;">
+                                <input type="hidden" name="idCategoria" th:value="${c.idCategoria}" />
+                                <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('¿Estás seguro de eliminar esta categoría?')">
+                                    <i class="fas fa-trash"></i> Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalCategorias == 0}" class="text-center mt-3">
+                <p>No hay categorías registradas aún.</p>
+            </div>
+        </div>
+    </section>
+
+    <section th:fragment="confirmarEliminar">
+    <!-- Modal u otro contenido futuro -->
+    </section>
 
 </body>
 
