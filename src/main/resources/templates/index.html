@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}" />
+    <body>
+        <header th:replace="~{general/fragmentos :: header}" />
+
+        <!-- Bienvenida e información de la biblioteca -->
+        <section class="container mt-4">
+            <h1 class="text-center">Bienvenido a la Biblioteca Virtual</h1>
+            <p class="lead text-center">
+                Explora una colección diversa de libros, desde clásicos literarios hasta ciencia moderna.
+            </p>
+
+            <!-- Libro destacado -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    Libro Destacado
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Cien años de soledad</h5>
+                    <p class="card-text">
+                        Una novela clásica de realismo mágico escrita por Gabriel García Márquez.
+                        Considerada una de las obras más importantes de la literatura en español.
+                    </p>
+                    <p><strong>Autor:</strong> Gabriel García Márquez</p>
+                    <p><strong>Año de publicación:</strong> 1967</p>
+                </div>
+            </div>
+
+            <!-- Video sobre lectura o libros -->
+            <div class="text-center">
+                <h3>¿Por qué es importante leer?</h3>
+                <iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/5Zy1ncG3sFk"
+                        title="Video sobre lectura" 
+                        frameborder="0"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        <footer th:replace="~{general/fragmentos :: footer}" />
+    </body>
+</html>

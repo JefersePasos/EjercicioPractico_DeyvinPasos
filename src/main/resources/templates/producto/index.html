@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{general/fragmentos :: head}" />
+
+<body>
+    <header th:replace="~{general/fragmentos :: header}" />
+
+    <main class="container py-4">
+        <h2>Bienvenido a la Biblioteca Virtual</h2>
+        <p>Explora nuestra colección de libros por categoría, descubre nuevas lecturas y comparte tus sugerencias o
+            quejas.</p>
+        <div class="ratio ratio-16x9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3e2MgMSPHnc?si=S7JPjy5tjx0FA2zO"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </main>
+    <footer th:replace="~{general/fragmentos :: footer}" />
+</body>
+
+</html>

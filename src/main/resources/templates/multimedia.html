@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{general/fragmentos :: header}"/>
+
+        <main class="container mt-4">
+            <h1>Recursos Multimedia</h1>
+            <p>Explora contenido audiovisual relacionado con la lectura, autores y cultura literaria.</p>
+
+            <section class="mb-4">
+                <h3>Música para Leer</h3>
+                <audio controls>
+                    <source th:src="@{/audios/musica.mp3}" type="audio/mpeg"/>
+                    Tu navegador no soporta el elemento <code>audio</code>.
+                </audio>
+            </section>
+
+            <section>
+                <h3>Video Educativo sobre Lectura</h3>
+                <video width="560" height="315" controls>
+                    <source th:src="@{/videos/lectura.mp4}" type="video/mp4"/>
+                    Tu navegador no soporta el elemento <code>video</code>.
+                </video>
+            </section>
+        </main>
+
+        <footer th:replace="~{general/fragmentos :: footer}"/>
+    </body>
+</html>
